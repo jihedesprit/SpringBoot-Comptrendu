@@ -1,19 +1,29 @@
 package esprit.tn.foyerjihedbouabid.DAO.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
+
+import java.util.Set;
 
 @Entity
+@Table(name="Chambre")
 @Getter
 @Setter
-@Table(name="Chambre")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Chambre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idChambre")
-    private long idChambre;
-    private long numeroChambre;
+    long idChambre;
+    long numeroChambre;
     @Enumerated(EnumType.STRING)
-    private TypeChambre chambre;
+    TypeChambre chambre;
+    @ManyToOne
+    Bloc bloc;
+    @OneToMany
+    Set<Reservation> reservation ;
 }

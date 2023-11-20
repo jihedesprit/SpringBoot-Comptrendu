@@ -4,20 +4,27 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
+@Table(name = "Reservation")
 @Getter
 @Setter
-@Table(name = "Reservation")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Reservation {
     @Id
 
     @Column(name = "idReservation")
-    private long idReservation;
-    private Date anneeUniversitaire;
-    private boolean estVide;
+    long idReservation;
+    Date anneeUniversitaire;
+    boolean estVide;
+    @ManyToMany(mappedBy = "resEt")
+    Set<Etudiant> etudiant;
 }

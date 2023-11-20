@@ -1,19 +1,26 @@
 package esprit.tn.foyerjihedbouabid.DAO.Entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 @Entity
+@Table(name="Universite")
 @Getter
 @Setter
-@Table(name="Universite")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Universite {
     @Id
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idUniversite")
-    private long idUniversite;
-    private String nomUniversite;
-    private String adress;
+    long idUniversite;
+    String nomUniversite;
+    String adress;
+
+    @OneToOne
+    Foyer foyer ;
 }

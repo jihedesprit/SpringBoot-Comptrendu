@@ -1,22 +1,29 @@
 package esprit.tn.foyerjihedbouabid.DAO.Entities;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
+@Table(name = "Etudiant")
 @Getter
 @Setter
-@Table(name = "Etudiant")
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Etudiant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idFoyer")
-    private long idFoyer;
-    private String nomEt;
-    private String prenomEt;
-    private long cin;
-    private String ecole;
-    private Date dateNaissance;
+    long idFoyer;
+    String nomEt;
+    String prenomEt;
+    long cin;
+    String ecole;
+    Date dateNaissance;
+    @ManyToMany
+    Set <Reservation> resEt;
 }
