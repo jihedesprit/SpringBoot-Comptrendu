@@ -22,9 +22,9 @@ public class Reservation {
     @Id
 
     @Column(name = "idReservation")
-    long idReservation;
+    String idReservation;
     Date anneeUniversitaire;
     boolean estVide;
-    @ManyToMany(mappedBy = "resEt")
+    @ManyToMany(mappedBy = "reset")
     Set<Etudiant> etudiant;
 }
