@@ -25,5 +25,5 @@ public class Etudiant {
     String ecole;
     Date dateNaissance;
     @ManyToMany
-    Set <Reservation> resEt;
+    Set <Reservation> reset;
 }
