@@ -2,13 +2,12 @@ package esprit.tn.foyerjihedbouabid.RestController;
 
 import esprit.tn.foyerjihedbouabid.DAO.Entities.Reservation;
 import esprit.tn.foyerjihedbouabid.Services.IReservationService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@RestController
+@AllArgsConstructor
 public class ReservationRestController {
     IReservationService iReservationService;
 
